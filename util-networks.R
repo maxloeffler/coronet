@@ -1470,7 +1470,9 @@ construct.edge.list.from.key.value.list = function(list, network.conf, directed 
         artifact.index = match("artifact", edge.attributes, nomatch = NA)
         if (!is.na(artifact.index)) {
             edge.attributes = edge.attributes[-artifact.index]
-            edge.attributes = c(edge.attributes, c("author.name"))
+            if (!("author.name" %in% edge.attributes)) {
+                edge.attributes = c(edge.attributes, c("author.name"))
+            }
         }
     }
 
